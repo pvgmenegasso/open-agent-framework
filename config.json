@@ -1,0 +1,16 @@
+{
+  "container": {
+    "image_name": "open-agent-framework",
+    "container_name": "oaf",
+    "port": 8000,
+    "build_context": {
+      "dev": "dev/",
+      "prod": "prod/"
+    },
+    "revision": {
+      "major": 0,
+      "minor": 0,
+      "fix": 34
+    }
+  }
+}

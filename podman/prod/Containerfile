@@ -1,0 +1,23 @@
+# Use the official Python image as a base (which is minimal)
+FROM python:3.14-slim
+
+# Set non-interactive frontend for apt installations
+ENV DEBIAN_FRONTEND=noninteractive
+
+# Install pipenv (Python dependency management tool)
+RUN pip install --upgrade pip pipenv
+
+# Set working directory to /app
+WORKDIR /app
+
+# Copy Pipfile and Pipfile.lock (assuming you already have them in your local context)
+COPY Pipfile Pipfile.lock /app/
+
+# Install Python dependencies using pipenv
+RUN pipenv install --dev
+
+# Expose port for FastAPI
+EXPOSE 8000
+
+# Run FastAPI using Uvicorn (recommended for production)
+CMD ["pipenv", "run", "uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]
