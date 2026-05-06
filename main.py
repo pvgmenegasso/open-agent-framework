@@ -1,6 +1,5 @@
 from fastapi import FastAPI
 from fastapi.concurrency import asynccontextmanager
-from ollama import ChatResponse, GenerateResponse
 
 from client.ollama_client import OllamaWrapper
 
@@ -40,12 +39,12 @@ async def stream_chat_with_model(prompt: str, agent: str):
 async def get_models():
     return await local_ollama.get_models()
 
-async def chat_streamer(prompt: str, agent: str) -> list[GenerateResponse]:
+async def chat_streamer(prompt: str, agent: str) -> list[any]:
     stream = local_ollama.stream_response(
         prompt=prompt,
         agent=agent
     )
-    output: list[GenerateResponse] = list()
+    output = list()
     async for chunk in stream:
         output.append(chunk)
     return output
