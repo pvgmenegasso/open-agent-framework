@@ -1,0 +1,11 @@
+services:
+  oaf-backend:
+    image: localhost/${IMAGE_PATH}
+    build:
+      context: ${IMAGE_PATH}
+      tags: 
+        - "${BUILD_ID}"
+        - latest
+        - localhost/oaf-backend
+    pull_policy: build
+  
