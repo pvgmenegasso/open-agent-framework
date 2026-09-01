@@ -1,0 +1,10 @@
+name: open-agent-framework
+
+services:
+  prod:
+    image: localhost/open-agent-framework_backend
+    build:
+      dockerfile: ./Containerfile
+      context: .
+      tags:
+        - LATEST
